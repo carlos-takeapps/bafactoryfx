@@ -1,0 +1,46 @@
+﻿@model BAFactory.Fx.Security.MembershipProvider.Module
+@{
+    ViewBag.Title = "Detalles del Módulo";
+}
+@Html.Partial("~/Areas/Membership/Views/Controls/ContentTitle.cshtml")
+<fieldset>
+    <legend>Module</legend>
+    <table width="100%">
+        <tr>
+            <td>
+                <div class="display-label">
+                    Área</div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Area.Name)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Nombre</div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Name)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Descripción</div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Description)
+                </div>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<br />
+@Html.Partial("~/Areas/Membership/Views/Controls/EditActionLink.cshtml")
+| @Html.Partial("~/Areas/Membership/Views/Controls/BackToIndexActionLink.cshtml")

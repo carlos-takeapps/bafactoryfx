@@ -1,0 +1,765 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MembershipSchemaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MembershipSchemaModelStoreContainer">
+          <EntitySet Name="Actions" EntityType="MembershipSchemaModel.Store.Actions" store:Type="Tables" Schema="membership" />
+          <EntitySet Name="Areas" EntityType="MembershipSchemaModel.Store.Areas" store:Type="Tables" Schema="membership" />
+          <EntitySet Name="Modules" EntityType="MembershipSchemaModel.Store.Modules" store:Type="Tables" Schema="membership" />
+          <EntitySet Name="Organizations" EntityType="MembershipSchemaModel.Store.Organizations" store:Type="Tables" Schema="membership" />
+          <EntitySet Name="OrganizationsUsersRoles" EntityType="MembershipSchemaModel.Store.OrganizationsUsersRoles" store:Type="Tables" Schema="membership" />
+          <EntitySet Name="Permissions" EntityType="MembershipSchemaModel.Store.Permissions" store:Type="Tables" Schema="membership" />
+          <EntitySet Name="Roles" EntityType="MembershipSchemaModel.Store.Roles" store:Type="Tables" Schema="membership" />
+          <EntitySet Name="RolesActions" EntityType="MembershipSchemaModel.Store.RolesActions" store:Type="Tables" Schema="membership" />
+          <EntitySet Name="Users" EntityType="MembershipSchemaModel.Store.Users" store:Type="Tables" Schema="membership" />
+          <EntitySet Name="UsersActionsLog" EntityType="MembershipSchemaModel.Store.UsersActionsLog" store:Type="Tables" Schema="membership" />
+          <EntitySet Name="UsersOrganizations" EntityType="MembershipSchemaModel.Store.UsersOrganizations" store:Type="Tables" Schema="membership" />
+          <AssociationSet Name="FK_Actions_Modules" Association="MembershipSchemaModel.Store.FK_Actions_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="Actions" EntitySet="Actions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyRolesViews_CompanyRoles" Association="MembershipSchemaModel.Store.FK_CompanyRolesViews_CompanyRoles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RolesActions" EntitySet="RolesActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modules_Areas" Association="MembershipSchemaModel.Store.FK_Modules_Areas">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="Modules" EntitySet="Modules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrganizationsUsersRoles_UsersOrganizations" Association="MembershipSchemaModel.Store.FK_OrganizationsUsersRoles_UsersOrganizations">
+            <End Role="UsersOrganizations" EntitySet="UsersOrganizations" />
+            <End Role="OrganizationsUsersRoles" EntitySet="OrganizationsUsersRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permission_Actions" Association="MembershipSchemaModel.Store.FK_Permission_Actions">
+            <End Role="Actions" EntitySet="Actions" />
+            <End Role="Permissions" EntitySet="Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permissions_UsersOrganizations" Association="MembershipSchemaModel.Store.FK_Permissions_UsersOrganizations">
+            <End Role="UsersOrganizations" EntitySet="UsersOrganizations" />
+            <End Role="Permissions" EntitySet="Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolesActions_Actions" Association="MembershipSchemaModel.Store.FK_RolesActions_Actions">
+            <End Role="Actions" EntitySet="Actions" />
+            <End Role="RolesActions" EntitySet="RolesActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserOrganization_Organizations" Association="MembershipSchemaModel.Store.FK_UserOrganization_Organizations">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="UsersOrganizations" EntitySet="UsersOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserOrganization_Users" Association="MembershipSchemaModel.Store.FK_UserOrganization_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersOrganizations" EntitySet="UsersOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersCompanyRoles_CompanyRoles" Association="MembershipSchemaModel.Store.FK_UsersCompanyRoles_CompanyRoles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="OrganizationsUsersRoles" EntitySet="OrganizationsUsersRoles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Actions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdModule" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Areas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Modules">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdArea" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Organizations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="OrganizationsUsersRoles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdUserOrganizatin" Type="bigint" Nullable="false" />
+          <Property Name="IdRol" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permissions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdUserOrganization" Type="bigint" Nullable="false" />
+          <Property Name="IdAction" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="RolesActions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdRol" Type="bigint" Nullable="false" />
+          <Property Name="IdAction" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Password" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UsersActionsLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="datetime2" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="30" />
+          <Property Name="ModuleName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ActionName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Url" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="EntityId" Type="bigint" />
+          <Property Name="Detail" Type="xml" />
+        </EntityType>
+        <EntityType Name="UsersOrganizations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="bigint" Nullable="false" />
+          <Property Name="IdOrganization" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Actions_Modules">
+          <End Role="Modules" Type="MembershipSchemaModel.Store.Modules" Multiplicity="1" />
+          <End Role="Actions" Type="MembershipSchemaModel.Store.Actions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Actions">
+              <PropertyRef Name="IdModule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyRolesViews_CompanyRoles">
+          <End Role="Roles" Type="MembershipSchemaModel.Store.Roles" Multiplicity="1" />
+          <End Role="RolesActions" Type="MembershipSchemaModel.Store.RolesActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolesActions">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modules_Areas">
+          <End Role="Areas" Type="MembershipSchemaModel.Store.Areas" Multiplicity="1" />
+          <End Role="Modules" Type="MembershipSchemaModel.Store.Modules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modules">
+              <PropertyRef Name="IdArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrganizationsUsersRoles_UsersOrganizations">
+          <End Role="UsersOrganizations" Type="MembershipSchemaModel.Store.UsersOrganizations" Multiplicity="1" />
+          <End Role="OrganizationsUsersRoles" Type="MembershipSchemaModel.Store.OrganizationsUsersRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersOrganizations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrganizationsUsersRoles">
+              <PropertyRef Name="IdUserOrganizatin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permission_Actions">
+          <End Role="Actions" Type="MembershipSchemaModel.Store.Actions" Multiplicity="1" />
+          <End Role="Permissions" Type="MembershipSchemaModel.Store.Permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Permissions">
+              <PropertyRef Name="IdAction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permissions_UsersOrganizations">
+          <End Role="UsersOrganizations" Type="MembershipSchemaModel.Store.UsersOrganizations" Multiplicity="1" />
+          <End Role="Permissions" Type="MembershipSchemaModel.Store.Permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersOrganizations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Permissions">
+              <PropertyRef Name="IdUserOrganization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolesActions_Actions">
+          <End Role="Actions" Type="MembershipSchemaModel.Store.Actions" Multiplicity="1" />
+          <End Role="RolesActions" Type="MembershipSchemaModel.Store.RolesActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolesActions">
+              <PropertyRef Name="IdAction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserOrganization_Organizations">
+          <End Role="Organizations" Type="MembershipSchemaModel.Store.Organizations" Multiplicity="1" />
+          <End Role="UsersOrganizations" Type="MembershipSchemaModel.Store.UsersOrganizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersOrganizations">
+              <PropertyRef Name="IdOrganization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserOrganization_Users">
+          <End Role="Users" Type="MembershipSchemaModel.Store.Users" Multiplicity="1" />
+          <End Role="UsersOrganizations" Type="MembershipSchemaModel.Store.UsersOrganizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersOrganizations">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersCompanyRoles_CompanyRoles">
+          <End Role="Roles" Type="MembershipSchemaModel.Store.Roles" Multiplicity="1" />
+          <End Role="OrganizationsUsersRoles" Type="MembershipSchemaModel.Store.OrganizationsUsersRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrganizationsUsersRoles">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BAFactory.Fx.Security.MembershipSchemaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MembershipSchemaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actions" EntityType="BAFactory.Fx.Security.MembershipSchemaModel.Action" />
+          <EntitySet Name="Areas" EntityType="BAFactory.Fx.Security.MembershipSchemaModel.Area" />
+          <EntitySet Name="Modules" EntityType="BAFactory.Fx.Security.MembershipSchemaModel.Module" />
+          <EntitySet Name="Permissions" EntityType="BAFactory.Fx.Security.MembershipSchemaModel.Permission" />
+          <EntitySet Name="Roles" EntityType="BAFactory.Fx.Security.MembershipSchemaModel.Role" />
+          <EntitySet Name="RoleActions" EntityType="BAFactory.Fx.Security.MembershipSchemaModel.RoleAction" />
+          <EntitySet Name="Users" EntityType="BAFactory.Fx.Security.MembershipSchemaModel.User" />
+          <AssociationSet Name="FK_Actions_Modules" Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_Actions_Modules">
+            <End Role="Module" EntitySet="Modules" />
+            <End Role="Action" EntitySet="Actions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permission_Actions" Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_Permission_Actions">
+            <End EntitySet="Actions" Role="Action" />
+            <End EntitySet="Permissions" Role="Permission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolesActions_Actions" Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_RolesActions_Actions">
+            <End Role="Action" EntitySet="Actions" />
+            <End Role="RolesAction" EntitySet="RoleActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modules_Areas" Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_Modules_Areas">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="Module" EntitySet="Modules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyRolesViews_CompanyRoles" Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_CompanyRolesViews_CompanyRoles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="RolesAction" EntitySet="RoleActions" />
+          </AssociationSet>
+          <EntitySet Name="Organizations" EntityType="BAFactory.Fx.Security.MembershipSchemaModel.Organization" />
+          <EntitySet Name="OrganizationUserRoles" EntityType="BAFactory.Fx.Security.MembershipSchemaModel.OrganizationUserRole" />
+          <EntitySet Name="UsersActionsLogs" EntityType="BAFactory.Fx.Security.MembershipSchemaModel.UsersActionsLog" />
+          <EntitySet Name="UserOrganizations" EntityType="BAFactory.Fx.Security.MembershipSchemaModel.UserOrganization" />
+          <AssociationSet Name="FK_UserOrganization_Organizations" Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_UserOrganization_Organizations">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="UsersOrganization" EntitySet="UserOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersCompanyRoles_CompanyRoles1" Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_UsersCompanyRoles_CompanyRoles1">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="OrganizationsUsersRole" EntitySet="OrganizationUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserOrganization_Users" Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_UserOrganization_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UsersOrganization" EntitySet="UserOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permissions_UsersOrganizations" Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_Permissions_UsersOrganizations">
+            <End Role="UserOrganization" EntitySet="UserOrganizations" />
+            <End Role="Permission" EntitySet="Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrganizationsUsersRoles_UsersOrganizations" Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_OrganizationsUsersRoles_UsersOrganizations">
+            <End Role="UserOrganization" EntitySet="UserOrganizations" />
+            <End Role="OrganizationUserRole" EntitySet="OrganizationUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="IdModule" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Module" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_Actions_Modules" FromRole="Action" ToRole="Module" />
+          <NavigationProperty Name="Permissions" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_Permission_Actions" FromRole="Action" ToRole="Permission" />
+          <NavigationProperty Name="RolesActions" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_RolesActions_Actions" FromRole="Action" ToRole="RolesAction" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Modules" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_Modules_Areas" FromRole="Area" ToRole="Module" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="IdArea" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Actions" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_Actions_Modules" FromRole="Module" ToRole="Action" />
+          <NavigationProperty Name="Area" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_Modules_Areas" FromRole="Module" ToRole="Area" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAction" Nullable="false" Type="Int64" />
+          <NavigationProperty Name="Action" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_Permission_Actions" FromRole="Permission" ToRole="Action" />
+          <Property Type="Int64" Name="IdUserOrganization" Nullable="false" />
+          <NavigationProperty Name="UsersOrganization" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_Permissions_UsersOrganizations" FromRole="Permission" ToRole="UserOrganization" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RolesActions" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_CompanyRolesViews_CompanyRoles" FromRole="Role" ToRole="RolesAction" />
+          <NavigationProperty Name="OrganizationsUsersRoles" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_UsersCompanyRoles_CompanyRoles1" FromRole="Role" ToRole="OrganizationsUsersRole" />
+        </EntityType>
+        <EntityType Name="RoleAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="IdRol" Nullable="false" />
+          <Property Type="Int64" Name="IdAction" Nullable="false" />
+          <NavigationProperty Name="Action" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_RolesActions_Actions" FromRole="RolesAction" ToRole="Action" />
+          <NavigationProperty Name="Role" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_CompanyRolesViews_CompanyRoles" FromRole="RolesAction" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="email" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UsersOrganizations" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_UserOrganization_Users" FromRole="User" ToRole="UsersOrganization" />
+        </EntityType>
+        <Association Name="FK_Actions_Modules">
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.Module" Role="Module" Multiplicity="1" />
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.Action" Role="Action" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Action">
+              <PropertyRef Name="IdModule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permission_Actions">
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.Action" Multiplicity="1" Role="Action" />
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.Permission" Multiplicity="*" Role="Permission" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Permission">
+              <PropertyRef Name="IdAction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolesActions_Actions">
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.Action" Role="Action" Multiplicity="1" />
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.RoleAction" Role="RolesAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolesAction">
+              <PropertyRef Name="IdAction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modules_Areas">
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.Area" Role="Area" Multiplicity="1" />
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.Module" Role="Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Module">
+              <PropertyRef Name="IdArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyRolesViews_CompanyRoles">
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.RoleAction" Role="RolesAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolesAction">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UsersOrganizations" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_UserOrganization_Organizations" FromRole="Organization" ToRole="UsersOrganization" />
+        </EntityType>
+        <EntityType Name="OrganizationUserRole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="IdRol" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_UsersCompanyRoles_CompanyRoles1" FromRole="OrganizationsUsersRole" ToRole="Role" />
+          <Property Type="Int64" Name="IdUserOrganizatin" Nullable="false" />
+          <NavigationProperty Name="UsersOrganization" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_OrganizationsUsersRoles_UsersOrganizations" FromRole="OrganizationUserRole" ToRole="UserOrganization" />
+        </EntityType>
+        <EntityType Name="UsersActionsLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="UserName" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ModuleName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ActionName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="EntityId" />
+          <Property Type="String" Name="Detail" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserOrganization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="IdUser" Nullable="false" />
+          <Property Type="Int64" Name="IdOrganization" Nullable="false" />
+          <NavigationProperty Name="Organization" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_UserOrganization_Organizations" FromRole="UsersOrganization" ToRole="Organization" />
+          <NavigationProperty Name="User" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_UserOrganization_Users" FromRole="UsersOrganization" ToRole="User" />
+          <NavigationProperty Name="Permissions" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_Permissions_UsersOrganizations" FromRole="UserOrganization" ToRole="Permission" />
+          <NavigationProperty Name="OrganizationsUsersRoles" Relationship="BAFactory.Fx.Security.MembershipSchemaModel.FK_OrganizationsUsersRoles_UsersOrganizations" FromRole="UserOrganization" ToRole="OrganizationUserRole" />
+        </EntityType>
+        <Association Name="FK_UserOrganization_Organizations">
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.Organization" Role="Organization" Multiplicity="1" />
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.UserOrganization" Role="UsersOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersOrganization">
+              <PropertyRef Name="IdOrganization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersCompanyRoles_CompanyRoles1">
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.OrganizationUserRole" Role="OrganizationsUsersRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrganizationsUsersRole">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserOrganization_Users">
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.User" Role="User" Multiplicity="1" />
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.UserOrganization" Role="UsersOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersOrganization">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permissions_UsersOrganizations">
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.UserOrganization" Role="UserOrganization" Multiplicity="1" />
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.Permission" Role="Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserOrganization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Permission">
+              <PropertyRef Name="IdUserOrganization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrganizationsUsersRoles_UsersOrganizations">
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.UserOrganization" Role="UserOrganization" Multiplicity="1" />
+          <End Type="BAFactory.Fx.Security.MembershipSchemaModel.OrganizationUserRole" Role="OrganizationUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserOrganization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrganizationUserRole">
+              <PropertyRef Name="IdUserOrganizatin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MembershipSchemaModelStoreContainer" CdmEntityContainer="MembershipSchemaEntities">
+          <EntitySetMapping Name="Actions">
+            <EntityTypeMapping TypeName="BAFactory.Fx.Security.MembershipSchemaModel.Action">
+              <MappingFragment StoreEntitySet="Actions">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdModule" ColumnName="IdModule" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="BAFactory.Fx.Security.MembershipSchemaModel.Area">
+              <MappingFragment StoreEntitySet="Areas">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modules">
+            <EntityTypeMapping TypeName="BAFactory.Fx.Security.MembershipSchemaModel.Module">
+              <MappingFragment StoreEntitySet="Modules">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="BAFactory.Fx.Security.MembershipSchemaModel.Permission">
+              <MappingFragment StoreEntitySet="Permissions">
+                <ScalarProperty Name="IdUserOrganization" ColumnName="IdUserOrganization" />
+                <ScalarProperty Name="IdAction" ColumnName="IdAction" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="BAFactory.Fx.Security.MembershipSchemaModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleActions">
+            <EntityTypeMapping TypeName="BAFactory.Fx.Security.MembershipSchemaModel.RoleAction">
+              <MappingFragment StoreEntitySet="RolesActions">
+                <ScalarProperty Name="IdAction" ColumnName="IdAction" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BAFactory.Fx.Security.MembershipSchemaModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organizations">
+            <EntityTypeMapping TypeName="BAFactory.Fx.Security.MembershipSchemaModel.Organization">
+              <MappingFragment StoreEntitySet="Organizations">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationUserRoles">
+            <EntityTypeMapping TypeName="BAFactory.Fx.Security.MembershipSchemaModel.OrganizationUserRole">
+              <MappingFragment StoreEntitySet="OrganizationsUsersRoles">
+                <ScalarProperty Name="IdUserOrganizatin" ColumnName="IdUserOrganizatin" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersActionsLogs">
+            <EntityTypeMapping TypeName="BAFactory.Fx.Security.MembershipSchemaModel.UsersActionsLog">
+              <MappingFragment StoreEntitySet="UsersActionsLog">
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserOrganizations">
+            <EntityTypeMapping TypeName="BAFactory.Fx.Security.MembershipSchemaModel.UserOrganization">
+              <MappingFragment StoreEntitySet="UsersOrganizations">
+                <ScalarProperty Name="IdOrganization" ColumnName="IdOrganization" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="MembershipProvider" ZoomLevel="74">
+        <EntityTypeShape EntityType="BAFactory.Fx.Security.MembershipSchemaModel.Action" Width="1.5" PointX="0.625" PointY="5.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="BAFactory.Fx.Security.MembershipSchemaModel.Area" Width="1.5" PointX="0.625" PointY="0.5" Height="1.787985026041671" />
+        <EntityTypeShape EntityType="BAFactory.Fx.Security.MembershipSchemaModel.Module" Width="1.5" PointX="0.625" PointY="3.125" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="BAFactory.Fx.Security.MembershipSchemaModel.Permission" Width="1.5" PointX="3.5" PointY="3.625" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="BAFactory.Fx.Security.MembershipSchemaModel.Role" Width="1.5" PointX="8.25" PointY="6.5" Height="1.9802864583333326" />
+        <EntityTypeShape EntityType="BAFactory.Fx.Security.MembershipSchemaModel.RoleAction" Width="1.5" PointX="5.125" PointY="6.5" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="BAFactory.Fx.Security.MembershipSchemaModel.User" Width="1.5" PointX="11.625" PointY="0.625" Height="2.1725878906249996" />
+        <AssociationConnector Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_Actions_Modules" >
+          <ConnectorPoint PointX="1.375" PointY="5.2975878906250031" />
+          <ConnectorPoint PointX="1.375" PointY="5.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_Permission_Actions" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.125" PointY="6.4011293263697908" />
+          <ConnectorPoint PointX="4.1218579587933677" PointY="6.4011293263697908" />
+          <ConnectorPoint PointX="4.1218579587933677" PointY="5.22068359375" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_RolesActions_Actions" >
+          <ConnectorPoint PointX="2.125" PointY="7.3074446614583337" />
+          <ConnectorPoint PointX="5.125" PointY="7.3074446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_Modules_Areas" >
+          <ConnectorPoint PointX="1.375" PointY="2.287985026041671" />
+          <ConnectorPoint PointX="1.375" PointY="3.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_CompanyRolesViews_CompanyRoles" >
+          <ConnectorPoint PointX="8.25" PointY="7.4901432291666659" />
+          <ConnectorPoint PointX="6.625" PointY="7.4901432291666659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BAFactory.Fx.Security.MembershipSchemaModel.Organization" Width="1.5" PointX="4.625" PointY="0.625" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="BAFactory.Fx.Security.MembershipSchemaModel.OrganizationUserRole" Width="1.875" PointX="11.625" PointY="6.125" Height="1.9802864583333326" />
+        <EntityTypeShape EntityType="BAFactory.Fx.Security.MembershipSchemaModel.UsersActionsLog" Width="1.5" PointX="0.5" PointY="9.625" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="BAFactory.Fx.Security.MembershipSchemaModel.UserOrganization" Width="1.875" PointX="8.125" PointY="2.875" Height="2.3648893229166665" />
+        <AssociationConnector Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_UserOrganization_Organizations" >
+          <ConnectorPoint PointX="6.125" PointY="1.5189925130208335" />
+          <ConnectorPoint PointX="9.0625" PointY="1.5189925130208335" />
+          <ConnectorPoint PointX="9.0625" PointY="2.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_UsersCompanyRoles_CompanyRoles1" >
+          <ConnectorPoint PointX="9.75" PointY="7.3026432291666659" />
+          <ConnectorPoint PointX="11.625" PointY="7.3026432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_UserOrganization_Users" >
+          <ConnectorPoint PointX="11.625" PointY="2.1582902018229166" />
+          <ConnectorPoint PointX="9.5625025" PointY="2.1582902018229166" />
+          <ConnectorPoint PointX="9.5625025" PointY="2.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_Permissions_UsersOrganizations" >
+          <ConnectorPoint PointX="8.125" PointY="4.422841796875" />
+          <ConnectorPoint PointX="5" PointY="4.422841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="BAFactory.Fx.Security.MembershipSchemaModel.FK_OrganizationsUsersRoles_UsersOrganizations" >
+          <ConnectorPoint PointX="10" PointY="4.5303101226996549" />
+          <ConnectorPoint PointX="12.5625" PointY="4.5303101226996549" />
+          <ConnectorPoint PointX="12.5625" PointY="6.125" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

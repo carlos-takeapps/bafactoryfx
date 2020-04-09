@@ -1,0 +1,47 @@
+﻿@model BAFactory.Fx.Security.MembershipProvider.Organization
+@{
+    ViewBag.Title = "Crear Organización";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@Html.Partial("~/Areas/Membership/Views/Controls/ContentTitle.cshtml")
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Organización</legend>
+        <table width="100%">
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Name)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Name, new { style = "width: 99%;" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Description)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Description, new { style = "width: 99%;" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div style="text-align: right;">
+                        <input type="submit" value="Crear" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}
+<br />
+@Html.Partial("~/Areas/Membership/Views/Controls/BackToIndexActionLink.cshtml")

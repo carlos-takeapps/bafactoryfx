@@ -1,0 +1,86 @@
+﻿@using BAFactory.Fx.Security.Areas.Membership.Extensions;
+@model BAFactory.Fx.Security.MembershipProvider.Action
+@{
+    ViewBag.Title = "Crear Acción";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript" language="javascript">
+    function UpdateModules(value) {
+        $.ajax({
+            url: 'http://@Request.Url.DnsSafeHost:@Request.Url.Port/Membership/Module/ListByArea/' + value,
+            success: function (data) {
+                $('#@FormsFieldsNames.ModuleId >option').remove();
+
+                $.each(data, function (id, val) {
+
+                    $('#@FormsFieldsNames.ModuleId').append(
+                        $('<option></option>').val(val.Item1).html(val.Item2)
+                    );
+                });
+            },
+            error: function (data) { alert('error: ' + data); }
+        });
+    }
+</script>
+@Html.Partial("~/Areas/Membership/Views/Controls/ContentTitle.cshtml")
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Nueva Acción</legend>
+        <table width="100%" style="vertical-align: top;">
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+            <tr style="vertical-align: top;">
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Module.IdArea)
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownListFor(model => model.Module.IdArea, ViewData[ViewDataKeys.SystemAreas] as SelectList, new { onchange = "UpdateModules(this.value);", style = "width: 99%;" })
+                        @Html.ValidationMessageFor(model => model.Module.IdArea)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Name)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Name, new { style = "width: 99%;" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.IdModule)
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownListFor(model => model.IdModule, ViewData[ViewDataKeys.SystemModules] as SelectList, new { style = "width: 99%;" })
+                        @Html.ValidationMessageFor(model => model.IdModule)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Description)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Description, new { style = "width: 99%;" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div style="text-align: right;">
+                        <input type="submit" value="Crear" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}
+<br />
+@Html.Partial("~/Areas/Membership/Views/Controls/BackToIndexActionLink.cshtml")

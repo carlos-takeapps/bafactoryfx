@@ -1,0 +1,56 @@
+﻿@model BAFactory.Fx.Security.MembershipProvider.Action
+@{
+    ViewBag.Title = "Eliminar Acción";
+}
+@Html.Partial("~/Areas/Membership/Views/Controls/ContentTitle.cshtml")
+<h3>
+    Está seguro de que quiere eliminar esta Acción del Módulo correspondiente?</h3>
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Acción</legend>
+        <table width="100%">
+            <tr>
+                <td>
+                    <div class="display-label">
+                        Módulo</div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.Module.Name)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">
+                        Nombre</div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.Name)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">
+                        Descripción</div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.Description)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div style="text-align: right;">
+                        <input type="submit" value="Borrar" /></div>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}
+<br />
+@Html.Partial("~/Areas/Membership/Views/Controls/BackToIndexActionLink.cshtml")

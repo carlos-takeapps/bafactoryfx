@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Areas/Membership/Content/Area.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.js")" type="text/javascript"></script>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <div id="logo">
+                <div id="logo_text">
+                    <!-- class="logo_colour", allows you to change the colour of the text -->
+                    <h1>
+                        <img src=@Url.Content("~/Areas/Membership/Content/themes/logo.png") alt="BAFactory" class="logo_image"/>
+                        <a href="/">BA<span class="logo_colour">Factory</span></a></h1>
+                </div>
+                <div id="logindisplay" style="float: right;">
+                    @Html.Partial("_LogOnPartial")
+                </div>
+            </div>
+            <div id="menubar">
+                <ul id="menu">
+                    <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+                    <li>@Html.ActionLink("Organizaciones", "Index", "Organization", null, null)</li>
+                    <li>@Html.ActionLink("Usuarios", "Index", "User", null, null)</li>
+                    <li>@Html.ActionLink("Áreas", "Index", "Area", null, null)</li>
+                    <li>@Html.ActionLink("Módulos", "Index", "Module", null, null)</li>
+                    <li>@Html.ActionLink("Acciones", "Index", "Action", null, null)</li>
+                    <li>@Html.ActionLink("Permisos", "Index", "Permission", null, null)</li>
+                </ul>
+            </div>
+        </div>
+        <div id="site_content">
+            @RenderBody()
+        </div>
+        <div id="content_footer">
+        </div>
+        <div id="footer">
+            Copyright &copy;BAFactory - 2012
+        </div>
+    </div>
+</body>
+</html>

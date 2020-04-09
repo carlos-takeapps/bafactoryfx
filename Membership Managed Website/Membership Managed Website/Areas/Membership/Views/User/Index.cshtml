@@ -1,0 +1,50 @@
+﻿@using BAFactory.Fx.Security.Areas.Membership.Extensions
+@model IEnumerable<BAFactory.Fx.Security.MembershipProvider.User>
+@{
+    ViewBag.Title = "Usuarios";
+}
+@Html.Partial("~/Areas/Membership/Views/Controls/ContentTitle.cshtml", ViewDataHelper.AddData(ViewData, ViewDataKeys.ShowCreateLink, true))
+@*<table width="100%">
+    <tr>
+        <td>
+            <div class="editor-field">
+                @Html.Partial("~/Areas/Membership/Views/Controls/SystemUsersTextBox.cshtml")
+            </div>
+        </td>
+        <td>
+            <div style="text-align: right;">
+                <input type="submit" value="Filtrar" />
+            </div>
+        </td>
+    </tr>
+</table>*@
+<table width="100%">
+    <tr>
+        <th>
+            Nombre Usuario
+        </th>
+        <th>
+            Nombre Completo
+        </th>
+        <th>
+            email
+        </th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            @Html.Partial("~/Areas/Membership/Views/Controls/ActionLinksCell.cshtml", new ViewDataDictionary() { new KeyValuePair<string, object>("Id", item.Id) })
+        </tr>
+    }
+</table>

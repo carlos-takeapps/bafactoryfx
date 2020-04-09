@@ -1,0 +1,41 @@
+﻿@model BAFactory.Fx.Security.MembershipProvider.Area
+@{
+    ViewBag.Title = "Borrar Área";
+}
+@Html.Partial("~/Areas/Membership/Views/Controls/ContentTitle.cshtml")
+<h3>
+    Confirma que desea eliminar esta Área del Sistema</h3>
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Área</legend>
+        <table width="100%">
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Description)
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div style="text-align: right;">
+                        <input type="submit" value="Borrar" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+
+}
+<br />
+@Html.Partial("~/Areas/Membership/Views/Controls/BackToIndexActionLink.cshtml")

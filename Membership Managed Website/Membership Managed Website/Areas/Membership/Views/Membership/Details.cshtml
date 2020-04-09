@@ -1,0 +1,32 @@
+﻿@model BAFactory.Fx.Security.MembershipProvider.UserOrganization
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>User Membership</legend>
+
+    <div class="display-label">User Id</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdUser)
+    </div>
+    <div class="display-label">Username</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.UserName)
+    </div>
+    <div class="display-label">Organization Id</div>
+    <div class="display-field"> 
+        @Html.DisplayFor(model => model.IdOrganization)
+    </div>
+        <div class="display-label">Organization Name</div>
+    <div class="display-field"> 
+        @Html.DisplayFor(model => model.Organization.Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

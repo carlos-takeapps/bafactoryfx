@@ -1,0 +1,42 @@
+﻿@using BAFactory.Fx.Security.Areas.Membership.Extensions;
+@model IEnumerable<BAFactory.Fx.Security.MembershipProvider.Module>
+@{
+    ViewBag.Title = "Módulos";
+}
+@Html.Partial("~/Areas/Membership/Views/Controls/ContentTitle.cshtml", ViewDataHelper.AddData(ViewData, ViewDataKeys.ShowCreateLink, true))
+<table>
+    <tr>
+        <th>
+            Área
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Descripción
+        </th>
+        <th>
+        </th>
+        <th>
+            Ruta
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            @Html.Partial("~/Areas/Membership/Views/Controls/ActionLinksCell.cshtml", new ViewDataDictionary() { new KeyValuePair<string, object>("Id", item.Id) })
+            <td class="RouteLinkCell">
+                @Html.RouteLink(@String.Format("http://{0}/{1}/{2}", @Request.Url.DnsSafeHost, item.Area.Name, item.Name), new { Area = item.Area.Name, Controller = item.Name })
+            </td>
+        </tr>
+    }
+</table>

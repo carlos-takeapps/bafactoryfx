@@ -1,0 +1,56 @@
+﻿@model BAFactory.Fx.Security.MembershipProvider.User
+@{
+    ViewBag.Title = "Eliminar Usuario";
+}
+@Html.Partial("~/Areas/Membership/Views/Controls/ContentTitle.cshtml")
+<h3>
+    Está seguro que quiere eliminar a este Usuario del Sistema?</h3>
+@using (Html.BeginForm())
+{<fieldset>
+    <legend>Acción</legend>
+    <table width="100%">
+        <tr>
+            <td>
+                <div class="display-label">
+                    Usuario</div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.UserName)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Nombre</div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.FullName)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    email</div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.email)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div style="text-align: right;">
+                    <input type="submit" value="Borrar" />
+                </div>
+            </td>
+        </tr>
+    </table>
+    </fieldset>
+}
+<br />
+@Html.Partial("~/Areas/Membership/Views/Controls/BackToIndexActionLink.cshtml")

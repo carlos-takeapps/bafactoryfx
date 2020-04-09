@@ -1,0 +1,30 @@
+﻿@using BAFactory.Fx.Security.Areas.Membership.Extensions;
+@model IEnumerable<BAFactory.Fx.Security.MembershipProvider.Organization>
+@{
+    ViewBag.Title = "Organizaciones";
+}
+@Html.Partial("~/Areas/Membership/Views/Controls/ContentTitle.cshtml", ViewDataHelper.AddData(ViewData, ViewDataKeys.ShowCreateLink, true))
+<table width="100%" >
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Descripción
+        </th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            @Html.Partial("~/Areas/Membership/Views/Controls/ActionLinksCell.cshtml", new ViewDataDictionary() { new KeyValuePair<string, object>("Id", item.Id) })
+        </tr>
+    }
+</table>

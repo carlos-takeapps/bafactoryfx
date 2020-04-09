@@ -1,0 +1,10 @@
+﻿@using BAFactory.Fx.Security.MVCExtension
+@using BAFactory.Fx.Security.MembershipProvider
+
+@if(Request.IsAuthenticated) {
+    <p class="logonname">Bienvenid&#64; <strong>@User.Identity.Name</strong>!</p>
+}
+else
+{
+    @:[ @Html.ActionLink("Log On", "LogOn", "Account") ]
+}

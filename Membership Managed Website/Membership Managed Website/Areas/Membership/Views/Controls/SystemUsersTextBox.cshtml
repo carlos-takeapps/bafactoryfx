@@ -1,0 +1,14 @@
+﻿@using BAFactory.Fx.Security.Areas.Membership.Extensions;
+
+@Html.TextBox(FormsFieldsNames.Username, ViewBag.Username as string, new { style = "width: 99%;" })
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#@FormsFieldsNames.Username").autocomplete({
+            source: 'http://@Request.Url.DnsSafeHost:@Request.Url.Port/User/Suggest/',
+            minLength: 2,
+            select: function (event, ui) {
+            }
+        });
+    });
+</script>

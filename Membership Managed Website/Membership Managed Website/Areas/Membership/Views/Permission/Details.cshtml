@@ -1,0 +1,57 @@
+﻿@model BAFactory.Fx.Security.MembershipProvider.Permission
+@{
+    ViewBag.Title = "Detalle del Permiso";
+}
+@Html.Partial("~/Areas/Membership/Views/Controls/ContentTitle.cshtml")
+<fieldset>
+    <legend>Permiso</legend>
+    <table width="100%">
+        <tr>
+            <td>
+                <div class="display-label">
+                    Área</div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Action.Module.Area.Name)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Módulo</div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Action.Module.Name)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Acción</div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Action.Name)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Usuario</div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.User.UserName)
+                </div>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<br />
+    @Html.Partial("~/Areas/Membership/Views/Controls/EditActionLink.cshtml")
+    | @Html.Partial("~/Areas/Membership/Views/Controls/BackToIndexActionLink.cshtml")

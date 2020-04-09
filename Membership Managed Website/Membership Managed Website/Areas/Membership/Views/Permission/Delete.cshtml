@@ -1,0 +1,68 @@
+﻿@model BAFactory.Fx.Security.MembershipProvider.Permission
+@{
+    ViewBag.Title = "Eliminar Permiso";
+}
+@Html.Partial("~/Areas/Membership/Views/Controls/ContentTitle.cshtml")
+<h3>
+    Está seguro que quiere eliminar este Permiso del Sistema?</h3>
+@using (Html.BeginForm())
+{
+
+    <fieldset>
+        <legend>Permiso</legend>
+        <table width="100%">
+            <tr>
+                <td>
+                    <div class="display-label">
+                        Área</div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.Action.Module.Area.Name)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">
+                        Módulo</div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.Action.Module.Name)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">
+                        Acción</div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.Action.Name)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">
+                        Usuario</div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.User.UserName)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div style="text-align: right;">
+                        <input type="submit" value="Delete" /></div>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}
+<br />
+@Html.Partial("~/Areas/Membership/Views/Controls/BackToIndexActionLink.cshtml")

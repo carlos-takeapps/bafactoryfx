@@ -1,0 +1,16 @@
+﻿@using BAFactory.Fx.Security.Areas.Membership.Extensions;
+<table id="title_table">
+    <tr>
+        <td>
+            <h2>@ViewBag.Title</h2>
+        </td>
+        @if (ViewData[ViewDataKeys.ShowCreateLink] != null && (bool)ViewData[ViewDataKeys.ShowCreateLink])
+        {
+            <td style="width: 100px; text-align: center;">
+                <p>
+                    @Html.ActionLink("Crear", "Create")
+                </p>
+            </td>
+        }
+    </tr>
+</table>

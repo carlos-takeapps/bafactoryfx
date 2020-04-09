@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{67FB8178-1BB3-4B1A-8980-37C784855876}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{10ED5BB2-5866-4C7B-AAE0-E7B4CF6DC580}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{D10EA78C-7C81-42F3-A0A4-EB70A02C91EC}"
+	ProjectSection(SolutionItems) = preProject
+		README.txt = README.txt
+	EndProjectSection
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Membership Provider DB", "Membership Provider DB\Membership Provider DB.sqlproj", "{DE06F42D-C2BC-4511-9C7A-22DF4C4CB595}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership Provider", "Membership Provider\Membership Provider.csproj", "{C6F9EEAA-612B-4163-AA7C-626B8820AE28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership Managed Website", "Membership Managed Website\Membership Managed Website\Membership Managed Website.csproj", "{0663787E-3CA3-412B-BA8C-270067F2A03E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership Managed Website.Tests", "Membership Managed Website\Membership Managed Website.Tests\Membership Managed Website.Tests.csproj", "{F925C37F-B9A2-4D68-B7FD-BD29A2E19EBD}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs05
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Membership\u0020Provider\u0020DB\\Membership\u0020Provider\u0020DB.sqlproj
+		SccProjectTopLevelParentUniqueName1 = Security.sln
+		SccProjectName1 = Membership\u0020Provider\u0020DB
+		SccLocalPath1 = Membership\u0020Provider\u0020DB
+		SccProjectUniqueName2 = Membership\u0020Provider\\Membership\u0020Provider.csproj
+		SccProjectName2 = Membership\u0020Provider
+		SccLocalPath2 = Membership\u0020Provider
+		SccProjectUniqueName3 = Membership\u0020Managed\u0020Website\\Membership\u0020Managed\u0020Website\\Membership\u0020Managed\u0020Website.csproj
+		SccProjectName3 = Membership\u0020Managed\u0020Website/Membership\u0020Managed\u0020Website
+		SccLocalPath3 = Membership\u0020Managed\u0020Website\\Membership\u0020Managed\u0020Website
+		SccProjectUniqueName4 = Membership\u0020Managed\u0020Website\\Membership\u0020Managed\u0020Website.Tests\\Membership\u0020Managed\u0020Website.Tests.csproj
+		SccProjectTopLevelParentUniqueName4 = Security.sln
+		SccProjectName4 = Membership\u0020Managed\u0020Website/Membership\u0020Managed\u0020Website.Tests
+		SccLocalPath4 = Membership\u0020Managed\u0020Website\\Membership\u0020Managed\u0020Website.Tests
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE06F42D-C2BC-4511-9C7A-22DF4C4CB595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE06F42D-C2BC-4511-9C7A-22DF4C4CB595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE06F42D-C2BC-4511-9C7A-22DF4C4CB595}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DE06F42D-C2BC-4511-9C7A-22DF4C4CB595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE06F42D-C2BC-4511-9C7A-22DF4C4CB595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE06F42D-C2BC-4511-9C7A-22DF4C4CB595}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C6F9EEAA-612B-4163-AA7C-626B8820AE28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6F9EEAA-612B-4163-AA7C-626B8820AE28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6F9EEAA-612B-4163-AA7C-626B8820AE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6F9EEAA-612B-4163-AA7C-626B8820AE28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0663787E-3CA3-412B-BA8C-270067F2A03E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0663787E-3CA3-412B-BA8C-270067F2A03E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0663787E-3CA3-412B-BA8C-270067F2A03E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0663787E-3CA3-412B-BA8C-270067F2A03E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F925C37F-B9A2-4D68-B7FD-BD29A2E19EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F925C37F-B9A2-4D68-B7FD-BD29A2E19EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F925C37F-B9A2-4D68-B7FD-BD29A2E19EBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DE06F42D-C2BC-4511-9C7A-22DF4C4CB595} = {67FB8178-1BB3-4B1A-8980-37C784855876}
+		{F925C37F-B9A2-4D68-B7FD-BD29A2E19EBD} = {10ED5BB2-5866-4C7B-AAE0-E7B4CF6DC580}
+	EndGlobalSection
+EndGlobal

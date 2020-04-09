@@ -1,0 +1,66 @@
+﻿@using BAFactory.Fx.Security.Areas.Membership.Extensions;
+@model List<BAFactory.Fx.Security.MembershipProvider.Permission>
+@{
+    ViewBag.Title = "Permisos del Sistema";
+}
+@Html.Partial("~/Areas/Membership/Views/Controls/ContentTitle.cshtml", ViewDataHelper.AddData(ViewData, ViewDataKeys.ShowCreateLink, true))
+@using (@Html.BeginForm())
+{
+    <table style="width: 100%">
+        <tr>
+            <td>
+                @Html.DropDownList(FormsFieldsNames.FilterForm.AreaId, ViewData[ViewDataKeys.SystemAreas] as SelectList, new { style = "width: 100%;" })
+            </td>
+            <td>
+                @Html.DropDownList(FormsFieldsNames.FilterForm.UserId, ViewData[ViewDataKeys.SystemUsers] as SelectList, new { style = "width: 100%;" })
+            </td>
+            <td>
+                <div style="text-align: center;">
+                    <input type="submit" value="filtrar" /></div>
+            </td>
+        </tr>
+    </table>
+    
+}
+<table style="width: 100%;">
+    <tr>
+        <th>
+            Usuario
+        </th>
+        <th>
+            Organización
+        </th>
+        <th>
+            Área
+        </th>
+        <th>
+            M&oacute;dulo
+        </th>
+        <th>
+            Acci&oacute;n
+        </th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsersOrganization.User.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsersOrganization.Organization.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Action.Module.Area.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Action.Module.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Action.Name)
+            </td>
+            @Html.Partial("~/Areas/Membership/Views/Controls/ActionLinksCell.cshtml", new ViewDataDictionary() { new KeyValuePair<string, object>("Id", item.Id) })
+        </tr>
+    }
+</table>

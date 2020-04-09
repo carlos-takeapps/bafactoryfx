@@ -1,0 +1,14 @@
+﻿@using BAFactory.Fx.Security.Areas.Membership.Extensions;
+
+Seleccionar Área: @Html.TextBox(FormsFieldsNames.AreaId, ViewBag.IdArea as string)
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#@FormsFieldsNames.AreaId").autocomplete({
+            source: '/Area/Suggest/',
+            minLength: 2,
+            select: function (event, ui) {
+            }
+        });
+    });
+</script>
